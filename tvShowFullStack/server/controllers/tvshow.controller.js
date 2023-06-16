@@ -50,7 +50,6 @@ module.exports.updateShowById = (req, resp) => {
         })
         .catch((err) => {
             resp.status(400).json({
-                message: "Something went wrong",
                 error: err,
             });
         });
@@ -59,7 +58,7 @@ module.exports.updateShowById = (req, resp) => {
 module.exports.deleteShowById = (req, resp) => {
     Show.deleteOne({ _id: req.params.id })
         .then((result) => {
-            resp.status(204).json({ result: result });
+            resp.json({ result: result });
         })
         .catch((err) => {
             resp.status(400).json({

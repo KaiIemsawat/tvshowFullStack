@@ -35,7 +35,7 @@ const CreateShow = (props) => {
                     err.response.data.err.errors,
                     "From CreateShow submitHandler"
                 );
-                setErrors(err.response.data.err.errors);
+                setErrors(err.response.data.err.errors); // <--- the 'err' refer to error in createShow in tvshow.controller.js
             });
     };
     return (
