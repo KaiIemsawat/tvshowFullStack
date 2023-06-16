@@ -11,16 +11,16 @@ const CreateShow = (props) => {
         creater: "",
         genre: "",
     });
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({}); // <--- object type ({})
     const changeHandler = (e) => {
         setShow({ ...show, [e.target.name]: e.target.value });
     };
     const submitHandler = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:8000/api/newShow", show)
+            .post("http://localhost:8000/api/newShow", show) // <-- this show comes from useState
             .then((resp) => {
-                console.log(resp);
+                console.log(resp, "print from CreateShow submitHandler");
                 // setShow({
                 //     title: "",
                 //     releaseYear: 1980,
@@ -31,7 +31,10 @@ const CreateShow = (props) => {
                 navigate("/");
             })
             .catch((err) => {
-                console.log(err.response.data.err.errors);
+                console.log(
+                    err.response.data.err.errors,
+                    "From CreateShow submitHandler"
+                );
                 setErrors(err.response.data.err.errors);
             });
     };
@@ -46,14 +49,14 @@ const CreateShow = (props) => {
                         onChange={changeHandler}
                         value={show.title}
                     />
-                    {errors.title ? (
+                    {errors.title ? ( // <-- errors comes from useState
                         <p className="text-danger">{errors.title.message}</p>
                     ) : null}
                 </div>
                 <div>
                     <label>Release Year : </label>
                     <input
-                        type="text"
+                        type="number"
                         name="releaseYear"
                         onChange={changeHandler}
                         value={show.releaseYear}

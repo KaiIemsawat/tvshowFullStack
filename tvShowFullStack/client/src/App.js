@@ -11,15 +11,16 @@ function App() {
     return (
         <>
             <BrowserRouter>
-              <h1>Welcome to the TV Show App</h1>
-              <Link to={"/createShow/form"}>Add your show</Link>
-              <br/>
-              <Link to={"/"}>Home</Link>
-              <Routes>
-                  <Route path="/" element={<Display showList={showList} setShowList={setShowList}/>}/>
-                  <Route path="/createShow/form" element={<CreateShow/>}/>
-                  <Route path="/viewShow/:id" element={<OneShow/>}/>
-              </Routes>
+            {/* Links in this page (in this project) refer to port 3000 */}
+                <h1>Welcome to the TV Show App</h1>
+                <Link to={"/createShow/form"}>Add your show</Link>
+                <br/>
+                <Link to={"/"}>Home</Link>
+                <Routes>
+                    <Route path="/" element={<Display showList={showList} setShowList={setShowList}/>}/>
+                    <Route path="/createShow/form" element={<CreateShow/>}/>
+                    <Route path="/viewShow/:id" element={<OneShow/>}/>
+                </Routes>
             </BrowserRouter>
         </>
     );

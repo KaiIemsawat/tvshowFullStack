@@ -9,9 +9,9 @@ const OneShow = (props) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8000/api/oneShow/${id}`)
+            .get(`http://localhost:8000/api/oneShow/${id}`) // <--- oneShow from port 8000
             .then((resp) => {
-                console.log(resp.data.show);
+                console.log(resp.data.show, "print from useEffect");
                 setShow(resp.data.show);
             })
             .catch((err) => {

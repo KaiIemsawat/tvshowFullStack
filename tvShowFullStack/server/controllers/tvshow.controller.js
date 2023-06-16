@@ -5,7 +5,7 @@ module.exports.findAllShows = (req, resp) => {
         .then((allShows) => {
             resp.json({ shows: allShows });
             // Or
-            // resp.json(allShows);
+            // resp.json(allShows); // in Display.jsx setShowList willnot have .show --> setShowList(resp.data);
         })
         .catch((err) => {
             // resp.json({ message: "Something went wrong", error: err });
